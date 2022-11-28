@@ -10,21 +10,3 @@ function App() {
 }
 
 export default App;
-
-// useEffect(() => {
-//     if(isActive) {
-//       const interval = setInterval(() => {
-//         setSecondsLeft(secondsLeft => secondsLeft - 1)
-//       }, 1000)
-
-//       if(secondsLeft === 0) {
-//         clearInterval(interval)
-//         setIsActive(false)
-//         setButtonText('')
-//         timesUp()
-//       }
-
-//       return () => clearInterval(interval)
-//     }
-
-//   }, [isActive, secondsLeft, timesUp]);

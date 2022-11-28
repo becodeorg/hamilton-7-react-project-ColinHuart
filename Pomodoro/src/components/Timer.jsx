@@ -70,7 +70,7 @@ const Timer = () => {
     const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
     return (
         <Fragment>
-            <section className="h-[390px] w-[390px] rounded-full bg-cyan-300 mt-22 ml-auto mr-auto place-items-center">
+            <section className="h-[400px] w-[400px] rounded-full bg-cyan-300 mt-22 ml-auto mr-auto place-items-center shadow-shadowCircle p-[8px]">
                 <div className="timer-container min-w-[110px] rounded-full border-4 border-slate-600 w-96 h-96 ml-auto mr-auto pt-[90px] bg-slate-800 place-self-center  ">
                     <section className="timer w-[300px] ml-auto mr-auto">
                         <div className="clock flex flex-row items-center justify-center text-7xl ">
@@ -117,12 +117,12 @@ const Timer = () => {
                         <div className="flex flex-row justify-between ">
                             <button
                                 onClick={restart}
-                                className="text-white bg-slate-600 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-3 ">
+                                className="text-white bg-slate-600 hover:bg-slate-300  focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-3 ">
                                 Restart
                             </button>
                             <button
                                 onClick={closePopup}
-                                className="text-white bg-slate-600 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-3">
+                                className="text-white bg-slate-600 hover:bg-slate-300  focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-3">
                                 X
                             </button>
                         </div>
