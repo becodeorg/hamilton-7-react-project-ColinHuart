@@ -1,7 +1,9 @@
 import React, {Fragment, useState, useEffect, useRef} from "react";
+import sound from "../assets/mixkit-gaming-lock-2848.wav";
 
 import {MdRestartAlt} from "react-icons/md";
-//import useInterval from "use-interval";
+import {ImCancelCircle} from "react-icons/im";
+import useInterval from "use-interval";
 
 const Timer = () => {
     const [minutes, setMinutes] = useState(25);
@@ -56,27 +58,26 @@ const Timer = () => {
         setProgress(minutes * 60 + seconds);
     };
 
-    useEffect(() => {
+    // useInterval instead useEffect to run in Background (was just a copy paste, then adapt to the useInterval function)
+    useInterval(() => {
         if (start) {
-            tick.current = /*useInterval*/ setInterval(() => {
-                //time ticking
-                clearInterval(tick.current);
-                if (seconds === 0) {
-                    if (minutes !== 0) {
-                        setSeconds(59);
-                        setMinutes(minutes - 1);
-                    }
-                } else if (minutes == 0 && seconds == 1) {
-                    setSeconds(0);
-                    setStart(false);
-                    setModal(true);
-                } else {
-                    setSeconds(seconds - 1);
+            //time ticking
+            clearInterval(tick.current);
+            if (seconds === 0) {
+                if (minutes !== 0) {
+                    setSeconds(59);
+                    setMinutes(minutes - 1);
                 }
-            }, 1000);
+            } else if (minutes == 0 && seconds == 1) {
+                setSeconds(0);
+                setStart(false);
+                setModal(true);
+                new Audio(sound).play();
+            } else {
+                setSeconds(seconds - 1);
+            }
         }
-        return () => clearInterval(tick.current);
-    }, [seconds, start]);
+    }, 1000);
 
     const pourcentage = 100 - ((minutes * 60 + seconds) / progress) * 100;
     console.log(pourcentage);
@@ -144,7 +145,7 @@ const Timer = () => {
                 </section>
             </div>
             {modal && (
-                <div className="absolute  h-screen w-screen bg-slate-800 bg-opacity-60 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl">
+                <div className="absolute  h-full w-screen bg-slate-800 bg-opacity-60 top-[37%] lg:top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl">
                     <div className="bg-slate-800 min-w-fit rounded-lg min-h-fit h-1/2 w-1/2 flex flex-col justify-between p-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-100 border border-cyan-300 ">
                         <h2 className="mt-12">Bravo !!</h2>
                         <p>Une pause s'impose</p>
@@ -152,12 +153,12 @@ const Timer = () => {
                             <button
                                 onClick={restart}
                                 className="text-white bg-slate-700 hover:bg-slate-300  focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-3 ">
-                                <MdRestartAlt />
+                                <MdRestartAlt size={28} />
                             </button>
                             <button
                                 onClick={closePopup}
                                 className="text-white bg-slate-700 hover:bg-slate-300  focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-3">
-                                X
+                                <ImCancelCircle size={28} />
                             </button>
                         </div>
                     </div>
