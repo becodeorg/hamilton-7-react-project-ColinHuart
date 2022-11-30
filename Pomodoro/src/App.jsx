@@ -3,7 +3,7 @@ import Timer from "./components/Timer";
 
 function App() {
     return (
-        <main className="h-screen bg-slate-800 text-gray-100 p-14 text-center relative">
+        <main className=" bg-slate-800 text-gray-100 p-14 text-center relative min-h-[100vh]">
             <Timer />
         </main>
     );
